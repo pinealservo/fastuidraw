@@ -944,7 +944,7 @@ create_stroked_path_attributes(void)
 
   m_max_miter = 0.0f;
   const_c_array<StrokedPath::point> miter_points;
-  miter_points = m_path.tessellation()->stroked()->points(StrokedPath::miter_join_point_set, true);
+  miter_points = m_path.tessellation()->stroked()->points(false, StrokedPath::miter_join_point_set, true);
   for(unsigned p = 0, endp = miter_points.size(); p < endp; ++p)
     {
       float v;

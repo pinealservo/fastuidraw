@@ -490,7 +490,7 @@ public:
                                   for closing edge.
    */
   const_c_array<point>
-  points(enum point_set_t tp, bool including_closing_edge) const;
+  points(bool for_pixel_width_stroking, enum point_set_t tp, bool including_closing_edge) const;
 
   /*!
     Return the index data into as returned by points() for stroking
@@ -511,7 +511,7 @@ public:
                                   for closing edge.
    */
   const_c_array<unsigned int>
-  indices(enum point_set_t tp, bool including_closing_edge) const;
+  indices(bool for_pixel_width_stroking, enum point_set_t tp, bool including_closing_edge) const;
 
   /*!
     Points returned by points(tp, including_closing_edge) have that
@@ -523,7 +523,7 @@ public:
                                   the closing edge.
    */
   unsigned int
-  number_depth(enum point_set_t tp, bool including_closing_edge) const;
+  number_depth(bool for_pixel_width_stroking, enum point_set_t tp, bool including_closing_edge) const;
 
   /*!
     Returns the number of contours of the generating path.
@@ -554,7 +554,7 @@ public:
              end of the contour
    */
   range_type<unsigned int>
-  points_range(enum point_set_t tp, unsigned int contour, unsigned int J) const;
+  points_range(bool for_pixel_width_stroking, enum point_set_t tp, unsigned int contour, unsigned int J) const;
 
   /*!
     Returns the range into indices(tp, true) for the
@@ -568,14 +568,14 @@ public:
              end of the contour
    */
   range_type<unsigned int>
-  indices_range(enum point_set_t tp, unsigned int contour, unsigned int J) const;
+  indices_range(bool for_pixel_width_stroking, enum point_set_t tp, unsigned int contour, unsigned int J) const;
 
   /*!
     Returns data that can be passed to a PainterPacker
     to stroke a path.
    */
   const PainterAttributeData&
-  painter_data(void) const;
+  painter_data(bool for_pixel_width_stroking) const;
 
 private:
   void *m_d;

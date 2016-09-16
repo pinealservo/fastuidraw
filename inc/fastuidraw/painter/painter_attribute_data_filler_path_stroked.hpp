@@ -105,7 +105,8 @@ namespace fastuidraw
       \param path FilledPath from which to construct attribute and index data.
      */
     explicit
-    PainterAttributeDataFillerPathStroked(const reference_counted_ptr<const StrokedPath> &path);
+    PainterAttributeDataFillerPathStroked(bool for_pixel_width_stroking,
+                                          const reference_counted_ptr<const StrokedPath> &path);
 
     ~PainterAttributeDataFillerPathStroked();
 
@@ -130,6 +131,11 @@ namespace fastuidraw
      */
     const reference_counted_ptr<const StrokedPath>&
     path(void) const;
+
+    /*!
+     */
+    bool
+    data_for_pixel_width_stroking(void) const;
 
     /*!
       Returns the value to feed to PainterAttributeData::index_data_chunk()
