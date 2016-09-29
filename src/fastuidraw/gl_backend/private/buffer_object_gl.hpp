@@ -169,12 +169,12 @@ private:
             if(binding_point != GL_COPY_READ_BUFFER)
               {
                 src_binding_point = GL_COPY_READ_BUFFER;
-                src_binding_point_query = GL_COPY_READ_BUFFER_BINDING;
+                src_binding_point_query = GL_COPY_READ_BUFFER;
               }
             else
               {
                 src_binding_point = GL_COPY_WRITE_BUFFER;
-                src_binding_point_query = GL_COPY_WRITE_BUFFER_BINDING;
+                src_binding_point_query = GL_COPY_WRITE_BUFFER;
               }
             prev_buffer = fastuidraw::gl::context_get<GLint>(src_binding_point_query);
             glBindBuffer(binding_point, m_buffer);

@@ -201,6 +201,7 @@ operator()(GLuint srcName, GLenum srcTarget, GLint srcLevel,
 
   switch(m_type)
     {
+#if 0
     case unextended_function:
       glCopyImageSubData(srcName, srcTarget, srcLevel,
                          srcX, srcY, srcZ,
@@ -208,6 +209,7 @@ operator()(GLuint srcName, GLenum srcTarget, GLint srcLevel,
                          dstX, dstY, dstZ,
                          width, height, depth);
       break;
+#endif
 
 #ifdef FASTUIDRAW_GL_USE_GLES
     case oes_function:

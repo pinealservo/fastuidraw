@@ -14,7 +14,7 @@ ifeq ($(findstring MINGW,$(UNAME)),MINGW)
 endif
 
 #TODO: detection for DARWIN
-DARWIN_BUILD = 0
+DARWIN_BUILD = 1
 
 ###########################################
 # Setting for building libFastUIDraw.so base library
@@ -42,7 +42,7 @@ ifeq ($(MINGW_BUILD),1)
   endif
 else ifeq ($(DARWIN_BUILD),1)
   LIBRARY_BOOST_LIBS = -lboost_system-mt -lboost_thread-mt
-  LIBBARY_BOOST_INCLUDE = /usr/local/include
+  LIBBARY_BOOST_INCLUDE = -I/usr/local/include
 else
   LIBRARY_BOOST_LIBS = -lboost_system -lboost_thread
   LIBBARY_BOOST_INCLUDE =

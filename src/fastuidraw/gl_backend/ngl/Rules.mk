@@ -4,7 +4,7 @@ dirstack_$(sp)	:= $(d)
 d		:= $(dir)
 # End standard header
 
-GL_HEADER_FILES=$(GL_RAW_HEADER_FILES:%.h=$(GL_INCLUDEPATH)/%.h)
+GL_HEADER_FILES=$(GL_INC_HEADER_FILES:%.h=$(GL_INCLUDEPATH)/%.h)
 GLES_HEADER_FILES=$(GLES_RAW_HEADER_FILES:%.h=$(GL_INCLUDEPATH)/%.h)
 
 NGL_GL_CPP = src/fastuidraw/gl_backend/ngl_gl.cpp

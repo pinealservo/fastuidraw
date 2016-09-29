@@ -1662,7 +1662,7 @@ on_post_draw(void)
 
   glActiveTexture(GL_TEXTURE0 + binding_points.glyph_atlas_texel_store_uint());
   glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
-
+      
   glActiveTexture(GL_TEXTURE0 + binding_points.glyph_atlas_texel_store_float());
   glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
 

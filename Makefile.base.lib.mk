@@ -69,9 +69,15 @@ INSTALL_LIBS += libFastUIDraw_$(1).dll.a
 INSTALL_EXES += libFastUIDraw_$(1).dll
 else
 
+ifeq ($(DARWIN_BUILD),1)
+SONAMEFLAG := -install_name
+else
+SONAMEFLAG := -soname
+endif
+
 libFastUIDraw_$(1): libFastUIDraw_$(1).so
 libFastUIDraw_$(1).so: $$(LIBRARY_$(1)_ALL_OBJS)
-	$(CXX) -shared -Wl,-soname,libFastUIDraw_$(1).so -o libFastUIDraw_$(1).so $$(LIBRARY_$(1)_ALL_OBJS) $(LIBRARY_LIBS)
+	$(CXX) -shared -Wl,$$(SONAMEFLAG),libFastUIDraw_$(1).so -o libFastUIDraw_$(1).so $$(LIBRARY_$(1)_ALL_OBJS) $(LIBRARY_LIBS)
 CLEAN_FILES += libFastUIDraw_$(1).so
 INSTALL_LIBS += libFastUIDraw_$(1).so
 endif

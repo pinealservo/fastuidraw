@@ -75,11 +75,18 @@ libN$(1)_$(2).dll: $$(NGL_$(1)_$(2)_OBJ)
 INSTALL_LIBS += libFastUIDraw$(1)_$(2).dll.a libN$(1)_$(2).dll.a
 INSTALL_EXES += libFastUIDraw$(1)_$(2).dll libN$(1)_$(2).dll
 else
+
+ifeq ($(DARWIN_BUILD),1)
+SONAMEFLAG := -install_name
+else
+SONAMEFLAG := -soname
+endif
+
 libFastUIDraw$(1)_$(2): libFastUIDraw$(1)_$(2).so
 libFastUIDraw$(1)_$(2).so: libFastUIDraw_$(2).so libN$(1)_$(2).so $$(LIBRARY_$(1)_$(2)_ALL_OBJS)
-	$(CXX) -shared -Wl,-soname,libFastUIDraw$(1)_$(2).so -o libFastUIDraw$(1)_$(2).so $$(LIBRARY_$(1)_$(2)_ALL_OBJS) $$(LIBRARY_$(1)_LIBS) -L. -lFastUIDraw_$(2) -lN$(1)_$(2) $$(LIBRARY_LIBS)
+	$(CXX) -shared -Wl,$$(SONAMEFLAG),libFastUIDraw$(1)_$(2).so -o libFastUIDraw$(1)_$(2).so $$(LIBRARY_$(1)_$(2)_ALL_OBJS) $$(LIBRARY_$(1)_LIBS) -L. -lFastUIDraw_$(2) -lN$(1)_$(2) $$(LIBRARY_LIBS)
 libN$(1)_$(2).so: $$(NGL_$(1)_$(2)_OBJ)
-	$(CXX) -shared -Wl,-soname,libN$(1)_$(2).so -o libN$(1)_$(2).so $$(NGL_$(1)_$(2)_OBJ)
+	$(CXX) -shared -Wl,$$(SONAMEFLAG),libN$(1)_$(2).so -o libN$(1)_$(2).so $$(NGL_$(1)_$(2)_OBJ)
 LIBFASTUIDRAW_$(1)_$(2) = libFastUIDraw$(1)_$(2).so
 LIBN$(1)_$(2) = libN$(1)_$(2).so
 INSTALL_LIBS += libFastUIDraw$(1)_$(2).so libN$(1)_$(2).so

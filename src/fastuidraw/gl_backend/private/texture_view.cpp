@@ -57,12 +57,14 @@ texture_view(enum texture_view_support_t md,
 {
   #ifndef FASTUIDRAW_GL_USE_GLES
     {
+#if 0
       if(md == texture_view_without_extension)
         {
           glTextureView(texture, target, origtexture, internalformat,
                         minlevel, numlevels, minlayer, numlayers);
         }
       else
+#endif
         {
           assert(!"glTextureView not supported by GL context!\n");
         }
